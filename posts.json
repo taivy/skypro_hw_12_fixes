@@ -50,5 +50,13 @@
     {
         "pic": "uploads/images/cat.png",
         "content": "темная киска"
+    },
+    {
+        "pic": "uploads/images/cat.png",
+        "content": "появись киска"
+    },
+    {
+        "pic": "/uploads/images/cat.png",
+        "content": "Киска киска появись"
     }
 ]

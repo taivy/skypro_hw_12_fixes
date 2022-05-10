@@ -35,14 +35,14 @@ def upload_page():
         filename = file.filename
         content = request.values['content']
         posts = load_posts_from_json(post_path)
-        posts.append({'pic': f'images/{filename}', 'content': content})
+        posts.append({'pic': f'/uploads/images/{filename}', 'content': content})
         upload_posts_to_json(posts)
         file.save(f'uploads/{filename}')
     except FileNotFoundError:
         return "<h1>Файл не найден</h1>"
 
     else:
-        return render_template("post_uploaded.html", pic=f'uploads/images/{filename}', content=content)
+        return render_template("post_uploaded.html", pic=f'/uploads/images/{filename}', content=content)
 
 
 # print(post_path)
