@@ -4,7 +4,7 @@ from utils import get_posts_by_content, load_posts_from_json
 
 from config import post_path
 
-main_blueprint = Blueprint('main_blueprint', __name__, static_folder="/static/css", template_folder="templates")
+main_blueprint = Blueprint('main_blueprint', __name__, template_folder="templates")
 
 @main_blueprint.route('/')
 def main_page():

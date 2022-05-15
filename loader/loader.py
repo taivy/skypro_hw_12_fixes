@@ -22,7 +22,7 @@ from utils import load_posts_from_json, upload_posts_to_json
 # stream_handler.setFormatter(formatter)
 
 
-loader_blueprint = Blueprint('loader_blueprint', __name__, url_prefix="/post", static_folder="/static/css", template_folder="templates")
+loader_blueprint = Blueprint('loader_blueprint', __name__, url_prefix="/post", template_folder="templates")
 
 @loader_blueprint.route('/form/')
 def main_page():
