@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request
 
 
-from config import post_path
+from config import post_path, upload_folder
 from utils import load_posts_from_json, upload_posts_to_json
 
 # import logging
@@ -35,14 +35,16 @@ def upload_page():
         filename = file.filename
         content = request.values['content']
         posts = load_posts_from_json(post_path)
-        posts.append({'pic': f'/uploads/images/{filename}', 'content': content})
+        picture_path = f'{upload_folder}/{filename}'
+        picture_path_absolute = f'/{picture_path}'
+        file.save(picture_path)
+        posts.append({'pic': picture_path_absolute, 'content': content})
         upload_posts_to_json(posts)
-        file.save(f'uploads/{filename}')
     except FileNotFoundError:
         return "<h1>Файл не найден</h1>"
 
     else:
-        return render_template("post_uploaded.html", pic=f'/uploads/images/{filename}', content=content)
+        return render_template("post_uploaded.html", pic=picture_path_absolute, content=content)
 
 
 # print(post_path)
